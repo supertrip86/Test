@@ -1,0 +1,31 @@
+/* =====  Gift Registry style  ===== */
+
+.gift {
+    background-color: #fff;
+    padding: 30px 0;
+}
+
+.gift .owl-carousel {
+    margin: 30px 0;
+}
+
+.gift .client-logo {
+    opacity: 1;
+    line-height: 0;
+}
+
+.gift .client-logo:hover {
+    opacity: 1;
+}
+
+.gift img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.gift img:hover {
+    -webkit-filter: none;
+    filter: none;
+}

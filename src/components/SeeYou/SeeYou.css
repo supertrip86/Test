@@ -1,0 +1,32 @@
+/* ======= See You style ======= */
+
+.seeyou {
+    background-image: url(../../assets/images/SeeYou/banner-3.jpg);
+}
+
+.seeyou .section-head span {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.seeyou .section-head h3 {
+    display: block;
+    position: relative;
+    top: 12px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    color: #fff;
+    margin-bottom: 0;
+    line-height: 1em;
+}
+
+.seeyou .section-head h4 {
+    position: relative;
+    color: #fff;
+    font-family: 'Alex Brush', cursive;
+    font-weight: 400;
+    font-size: 60px;
+    margin-bottom: 0;
+}
