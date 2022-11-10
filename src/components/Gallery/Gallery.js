@@ -1,11 +1,34 @@
-import gallery1 from '../../assets/images/Gallery/1.jpg';
-import gallery2 from '../../assets/images/Gallery/2.jpg';
-import gallery3 from '../../assets/images/Gallery/3.jpg';
-import gallery4 from '../../assets/images/Gallery/4.jpg';
-import gallery5 from '../../assets/images/Gallery/5.jpg';
-import gallery6 from '../../assets/images/Gallery/6.jpg';
+import './Gallery.css';
+import { useEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { galleryImages } from '../../assets/data/gallery';
+import GalleryImage from '../GalleryImage/GalleryImage';
+import FsLightbox from "fslightbox-react";
 
 const Gallery = () => {
+    const [filtered, setFiltered] = useState([]);
+    const [activeFilter, setActiveFilter] = useState("");
+    const [isOpen, setOpen] = useState(false);
+    const [currentImageIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        if (!activeFilter) {
+            setFiltered(galleryImages);
+            return;
+        }
+
+        const filteredGallery = galleryImages.filter(image => image.filter.includes(activeFilter));
+
+        setFiltered(filteredGallery);
+
+    }, [activeFilter]);
+
+    const showSlide = (index) => {
+        setOpen(!isOpen);
+
+        setCurrentIndex(index + 1);
+    };
+
     return (
         <div id='gallery' className='section-padding'>
             <div className='container'>
@@ -15,111 +38,32 @@ const Gallery = () => {
                         <h2 className='wedding-title'>Our Memories</h2>
                     </div>
                 </div>
+                <div className="row">
+                    <ul className="col list-unstyled list-inline mb-0 gallery-menu" id="gallery-filter">
+                        <li onClick={() => setActiveFilter("")} className="list-inline-item"><span className={activeFilter === "" ? "active" : ""}>All</span></li>
+                        <li onClick={() => setActiveFilter("ceremony")} className="list-inline-item"><span className={activeFilter === "ceremony" ? "active" : ""}>Ceremony</span></li>
+                        <li onClick={() => setActiveFilter("party")} className="list-inline-item"><span className={activeFilter === "party" ? "active" : ""}>Party</span></li>
+                    </ul>
+                </div>
             </div>
             <div className='container'>
-                <div className='row gallery-filter mt-3'>
-                    <div className='col-md-4 gallery-item ceremony'>
-                        <a href='/' className='img-zoom'>
-                            <div className='gallery-box'>
-                                <div className='gallery-img'>
-                                    
-                                    <img
-                                        src={gallery1}
-                                        className='img-fluid mx-auto d-block'
-                                        alt=''
-                                    />
-                                </div>
-                                <div className='gallery-detail'>
-                                    <h4 className='mb-0'>Wedding Ceremony</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='col-md-4 gallery-item party'>
-                        <a href='/' className='img-zoom'>
-                            <div className='gallery-box'>
-                                <div className='gallery-img'>
-                                    
-                                    <img
-                                        src={gallery2}
-                                        className='img-fluid mx-auto d-block'
-                                        alt=''
-                                    />
-                                </div>
-                                <div className='gallery-detail'>
-                                    <h4 className='mb-0'>Wedding Party</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='col-md-4 gallery-item ceremony'>
-                        <a href='/' className='img-zoom'>
-                            <div className='gallery-box'>
-                                <div className='gallery-img'>
-                                    
-                                    <img
-                                        src={gallery3}
-                                        className='img-fluid mx-auto d-block'
-                                        alt=''
-                                    />
-                                </div>
-                                <div className='gallery-detail'>
-                                    <h4 className='mb-0'>Wedding Ceremony</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='col-md-4 gallery-item party'>
-                        <a href='/' className='img-zoom'>
-                            <div className='gallery-box'>
-                                <div className='gallery-img'>
-                                    
-                                    <img
-                                        src={gallery4}
-                                        className='img-fluid mx-auto d-block'
-                                        alt=''
-                                    />
-                                </div>
-                                <div className='gallery-detail'>
-                                    <h4 className='mb-0'>Wedding Party</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='col-md-4 gallery-item ceremony'>
-                        <a href='/' className='img-zoom'>
-                            <div className='gallery-box'>
-                                <div className='gallery-img'>
-                                    
-                                    <img
-                                        src={gallery5}
-                                        className='img-fluid mx-auto d-block'
-                                        alt=''
-                                    />
-                                </div>
-                                <div className='gallery-detail'>
-                                    <h4 className='mb-0'>Wedding Ceremony</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className='col-md-4 gallery-item party'>
-                        <a href='/' className='img-zoom'>
-                            <div className='gallery-box'>
-                                <div className='gallery-img'>
-                                    
-                                    <img
-                                        src={gallery6}
-                                        className='img-fluid mx-auto d-block'
-                                        alt=''
-                                    />
-                                </div>
-                                <div className='gallery-detail'>
-                                    <h4 className='mb-0'>Wedding Party</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                <div className='row gallery-filter mt-3' key={filtered}>
+                    <AnimatePresence>
+                        {
+                            filtered.map((image, index) => {
+                                return (
+                                    <div className='col-md-4 gallery-item' key={index} onClick={() => showSlide(index)}>
+                                        <GalleryImage path={image.src} label={image.label} />
+                                    </div>
+                                )
+                            })
+                        }
+                    </AnimatePresence>
+                    <FsLightbox
+                        toggler={isOpen}
+                        slide={currentImageIndex}
+                        sources={filtered.map(image => image.src)}
+                    />
                 </div>
             </div>
         </div>

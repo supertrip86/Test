@@ -18,22 +18,22 @@ const Gifts = () => {
                     </div>
                     <div className="col-md-9 owl-carousel owl-theme">
                         <div className="client-logo">
-                            <a href="#"><img src={Logo1} alt="" /></a>
+                            <a href="https://duruthemes.com/demo/html/olivia-enrico/demo1/index.html"><img src={Logo1} alt="" /></a>
                         </div>
                         <div className="client-logo">
-                            <a href="#"><img src={Logo2} alt="" /></a>
+                            <a href="https://duruthemes.com/demo/html/olivia-enrico/demo1/index.html"><img src={Logo2} alt="" /></a>
                         </div>
                         <div className="client-logo">
-                            <a href="#"><img src={Logo3} alt="" /></a>
+                            <a href="https://duruthemes.com/demo/html/olivia-enrico/demo1/index.html"><img src={Logo3} alt="" /></a>
                         </div>
                         <div className="client-logo">
-                            <a href="#"><img src={Logo4} alt="" /></a>
+                            <a href="https://duruthemes.com/demo/html/olivia-enrico/demo1/index.html"><img src={Logo4} alt="" /></a>
                         </div>
                         <div className="client-logo">
-                            <a href="#"><img src={Logo5} alt="" /></a>
+                            <a href="https://duruthemes.com/demo/html/olivia-enrico/demo1/index.html"><img src={Logo5} alt="" /></a>
                         </div>
                         <div className="client-logo">
-                            <a href="#"><img src={Logo6} alt="" /></a>
+                            <a href="https://duruthemes.com/demo/html/olivia-enrico/demo1/index.html"><img src={Logo6} alt="" /></a>
                         </div>
                     </div>
                 </div>
