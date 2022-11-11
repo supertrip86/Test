@@ -4,7 +4,6 @@ import Sidebar from "./Sidebar/Sidebar";
 import Spouses from "./Spouses/Spouses";
 import Counter from "./Counter/Counter";
 import OurStory from './OurStory/OurStory';
-import Friends from "./Friends/Friends";
 import SeeYou from './SeeYou/SeeYou';
 import Organization from "./Organization/Organization";
 import Gallery from "./Gallery/Gallery";
@@ -14,24 +13,37 @@ import Footer from './Footer/Footer';
 import Gifts from "./Gifts/Gifts";
 
 function App() {
-    const weddingDate = "Dec 15, 2022 00:00:00";
+
+    const couple = {
+        bride: "Noelle",
+        brideSurname: "Turtur",
+        groom: "Giovanni",
+        groomSurname: "Giunta"
+    };
+    
+    const location = {
+        city: "Rome",
+        area: "Appia Antica",
+        party: "Villa Rosantica"
+    };
+
+    const weddingDate = "Jul 01, 2023 18:00:00";
 
     return (
         <div>
-            <Sidebar />
+            <Sidebar couple={couple} location={location} weddingDate={weddingDate} />
             <div id="wedding-main">
-                <Header />
-                <Spouses />
+                <Header couple={couple} location={location} weddingDate={weddingDate} />
+                <Spouses couple={couple} location={location} weddingDate={weddingDate} />
                 <Counter targetDate={weddingDate} />
                 <OurStory />
-                <Friends />
-                <SeeYou />
+                <SeeYou weddingDate={weddingDate} />
                 <Organization />
                 <Gallery />
                 <WhenWhere />
                 <RSVP />
                 <Gifts />
-                <Footer />
+                <Footer couple={couple} location={location} weddingDate={weddingDate} />
             </div>
         </div>
     );

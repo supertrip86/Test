@@ -1,7 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/fonts/google-fonts/google-fonts.css';
 import './assets/fonts/themify-icons/themifiy-icons.css';
-import './assets/css/animate.css';
-import './assets/css/bootstrap.min.css';
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";

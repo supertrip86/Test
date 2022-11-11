@@ -1,6 +1,12 @@
 import './SeeYou.css';
 
-const Seeyou = () => {
+const Seeyou = ({ weddingDate }) => {
+    const date = new Date(weddingDate);
+
+    const day = date.toLocaleString('it-IT', { day: '2-digit' });
+    const month = date.toLocaleString('it-IT', { month: '2-digit' });
+    const year = date.getFullYear();
+
     return (
         <div
             id='seeyou'
@@ -9,11 +15,8 @@ const Seeyou = () => {
             <div className='container'>
                 <div className='row'>
                     <div className='section-head col-md-12 text-center'>
-                        <span>
-                            <i className='ti-heart'></i>
-                        </span>
                         <h4>Looking forward to see you!</h4>
-                        <h3>15.11.2021</h3>
+                        <h3>{day}.{month}.{year}</h3>
                     </div>
                 </div>
             </div>

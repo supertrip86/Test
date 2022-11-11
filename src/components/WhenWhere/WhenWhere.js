@@ -34,7 +34,7 @@ const WhereWhere = () => {
                             <img src={where2} alt='' />
                         </div>
                         <div className='content'>
-                            <h5>Weddding Party</h5>
+                            <h5>Wedding Party</h5>
                             <p>
                                 <i className='ti-location-pin'></i> Fortune Brooklyn restaurant,
                                 149 Broadway, Brooklyn, NY, USA

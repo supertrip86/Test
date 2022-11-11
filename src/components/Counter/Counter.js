@@ -4,10 +4,7 @@ import { useCountdown } from '../../hooks/useCountdown';
 const CountdownTimer = ({ targetDate }) => {
     const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
-    if (days + hours + minutes + seconds <= 0) {
-        return <ExpiredNotice />;
-    } 
-    else {
+    if (days + hours + minutes + seconds > 0) {
         return (
             <ShowCounter
                 days={days}
@@ -17,15 +14,6 @@ const CountdownTimer = ({ targetDate }) => {
             />
         );
     }
-};
-
-const ExpiredNotice = () => {
-    return (
-        <div className="expired-notice">
-            <span>Expired!!!</span>
-            <p>Please select a future date and time.</p>
-        </div>
-    );
 };
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {

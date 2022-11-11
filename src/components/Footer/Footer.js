@@ -1,7 +1,14 @@
 import './Footer.css';
 import Logo from '../../assets/images/Footer/logo.png'
 
-const Footer = () => {
+const Footer = ({ couple, location, weddingDate }) => {
+    const date = new Date(weddingDate);
+
+    const day = date.toLocaleString('it-IT', { day: '2-digit' });
+    const month = date.toLocaleString('it-IT', { month: 'long' });
+    const monthCapitalized = `${month.charAt(0).toUpperCase()}${month.slice(1)}`;
+    const year = date.getFullYear();
+
     return (
         <div className='footer2'>
             <div className='wedding-narrow-content'>
@@ -11,11 +18,11 @@ const Footer = () => {
                             <a href='/'>
                                 <img src={Logo} alt='' />
                                 <span>
-                                    Olivia <small>&</small> Enrico
+                                    {couple.bride} <small>&</small> {couple.groom}
                                 </span>
                             </a>
                         </h2>
-                        <p className='copyright'>December 15, 2021 – New York, Brooklyn</p>
+                        <p className='copyright'>{monthCapitalized} {day}, {year} – {location.city}, {location.area}</p>
                     </div>
                 </div>
             </div>

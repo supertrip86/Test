@@ -1,18 +1,32 @@
 import './Header.css';
-import { Animated } from 'react-animated-css';
+import { motion } from 'framer-motion';
 
-const Header = () => {
+const Header = ({ couple, location, weddingDate }) => {
+    const date = new Date(weddingDate);
+
+    const day = date.getDate();
+    const month = date.toLocaleString('it-IT', { month: 'long' });
+    const year = date.getFullYear();
+
     return (
         <header id="home" className="header valign bg-img parallaxie">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 text-center caption">
-                        <Animated animationIn="fadeInUp" animationInDuration={1000}>
-                            <h1 className="animate-box">Olivia & Enrico</h1>
-                        </Animated>
-                        <Animated animationIn="fadeInUp" animationInDuration={1000}>
-                            <h5 className="animate-box">15 December, 2022 – New York</h5>
-                        </Animated>
+                        <motion.div
+                            animate={{ y: 0, opacity: 1 }}
+                            initial={{ y: 30, opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <h1>{couple.bride} & {couple.groom}</h1>
+                        </motion.div>
+                        <motion.div
+                            animate={{ y: 0, opacity: 1 }}
+                            initial={{ y: 30, opacity: 0 }}
+                            transition={{ duration: 1 }}
+                        >
+                            <h5>{day} {month}, {year} – {location.city}</h5>
+                        </motion.div>
                     </div>
                 </div>
             </div>
